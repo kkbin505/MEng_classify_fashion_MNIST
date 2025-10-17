@@ -87,19 +87,7 @@ When you run the script, you should see the following:
 
 A summary of the model's architecture printed in the console.
 
-Model: "sequential"
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ flatten (Flatten)                    │ (None, 784)                 │               0 │
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-│ dense (Dense)                        │ (None, 128)                 │         100,480 │
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-│ dense_1 (Dense)                      │ (None, 10)                  │           1,290 │
-└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
- Total params: 101,770 (397.54 KB)
- Trainable params: 101,770 (397.54 KB)
- Non-trainable params: 0 (0.00 B)
+![alt text](image-2.png)
 
 
 The training progress for 10 epochs, showing the loss and accuracy for each epoch.
