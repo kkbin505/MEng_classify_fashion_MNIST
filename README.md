@@ -87,7 +87,7 @@ When you run the script, you should see the following:
 
 A summary of the model's architecture printed in the console.
 
-![alt text](image-2.png)
+![alt text](img/image-2.png)
 
 
 The training progress for 10 epochs, showing the loss and accuracy for each epoch.
@@ -98,8 +98,8 @@ Two plot windows will appear:
 
 The first shows a sample prediction on a test image.
 
-![Prediction](image.png)
+![Prediction](img/image.png)
 
 The second shows the model's accuracy and loss history over the training epochs.
 
-![epochs](image-1.png)
+![epochs](img/image-1.png)
