@@ -103,3 +103,14 @@ The first shows a sample prediction on a test image.
 The second shows the model's accuracy and loss history over the training epochs.
 
 ![epochs](img/image-1.png)
+
+ ## Add nootbook
+
+ Now we can run this file in cloud:
+
+ 1 Open google https://colab.research.google.com/
+ 2 Import github from the git link https://github.com/kkbin505/MEng_classify_fashion_MNIST.git
+ 3 run note book and have fun
+
+
+ ## 

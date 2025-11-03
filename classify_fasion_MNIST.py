@@ -1,3 +1,6 @@
+# Classifyer
+
+
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -110,7 +113,7 @@ plt.subplot(1,2,1)
 plot_image(i, predictions[i], test_labels, test_images)
 plt.subplot(1,2,2)
 plot_value_array(i, predictions[i], test_labels)
-plt.show()
+# plt.show()
 
 # Plot training & validation accuracy values
 print("\nPlotting training history...")
@@ -133,5 +136,86 @@ plt.xlabel('Epoch')
 plt.legend(['Train', 'Validation'], loc='upper left')
 
 plt.tight_layout()
-plt.show()
+# plt.show()
 
+# =========================================================================
+# Step 8: CONVERT AND QUANTIZE MODEL FOR ESP32-S3 (TFLite Micro)
+# We use Hybrid Quantization (INT8 interface, aiming for better internal precision)
+# =========================================================================
+
+# 8.1 Define the Converter
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+
+# 8.2 Enable Full Integer Quantization with FLOAT16/INT16 Support
+
+# Enable default optimization (including weight quantization)
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
+
+# 1. Provide a Representative Dataset (Required for full integer quantization)
+# This dataset helps determine the min/max range for activation quantization.
+def representative_data_gen():
+    # Use 100 samples from the training data for calibration
+    # The data must be cast to float32 first, as expected by the generator
+    for input_value in tf.data.Dataset.from_tensor_slices(train_images).batch(1).take(100):
+        yield [tf.cast(input_value, tf.float32)]
+
+converter.representative_dataset = representative_data_gen
+
+# 2. Set Supported Types (Allowing higher internal precision for better accuracy)
+# This tells the converter that using INT16 or FLOAT16 for internal operations is acceptable,
+# which can help recover accuracy lost in 8-bit quantization.
+converter.target_spec.supported_types = [tf.float16, tf.int16] 
+
+# 3. Force Integer Input/Output (Required for TFLite Micro on ESP32)
+# We force INT8 I/O as TFLite's conversion API usually only supports INT8/UINT8 as the full integer interface.
+# converter.inference_input_type = tf.int8
+# converter.inference_output_type = tf.int8
+
+
+# 8.3 Perform the Conversion (This creates the optimized TFLite model)
+tflite_model_hybrid = converter.convert()
+
+# 8.4 Save the Quantized Model
+TFLITE_MODEL_NAME_HYBRID = 'fashion_mnist_quant_hybrid.tflite'
+with open(TFLITE_MODEL_NAME_HYBRID, 'wb') as f:
+    f.write(tflite_model_hybrid)
+
+print(f"\nHybrid INT8/INT16 Quantized TFLite model saved to: {TFLITE_MODEL_NAME_HYBRID}")
+print(f"Model size: {len(tflite_model_hybrid) / 1024:.2f} KB")
+
+# =========================================================================
+# Step 9: Evaluate the Quantized Model (Crucial Check)
+# =========================================================================
+
+# Evaluate the TFLite model to check for accuracy drop due to quantization.
+interpreter = tf.lite.Interpreter(model_content=tflite_model_hybrid)
+interpreter.allocate_tensors()
+input_details = interpreter.get_input_details()[0]
+output_details = interpreter.get_output_details()[0]
+
+# Preprocess test images for INT8 model (Scale from 0.0-1.0 back to 0-255 and cast to int8)
+# The input range for the INT8 model is typically [-128, 127] or [0, 255], 
+# depending on the zero-point determined by quantization. Here we assume 0-255 scale.
+test_images_float32 = test_images.astype(np.float32)
+
+tflite_predictions = []
+num_test_samples = 1000 # Increase samples for better confidence
+correct_predictions = 0
+
+for i in range(num_test_samples):
+    # Reshape and set the input tensor
+    input_data = test_images_float32[i:i+1].reshape(1, 28, 28)
+    interpreter.set_tensor(input_details['index'], input_data)
+    
+    # Run inference
+    interpreter.invoke()
+    
+    # Get the output tensor and find the predicted class index
+    output = interpreter.get_tensor(output_details['index'])
+    predicted_label = np.argmax(output[0])
+    
+    if predicted_label == test_labels[i]:
+        correct_predictions += 1
+
+tflite_accuracy = correct_predictions / num_test_samples
+print(f"Quantized TFLite model accuracy (on {num_test_samples} samples): {tflite_accuracy:.4f}")
