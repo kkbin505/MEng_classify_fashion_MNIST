@@ -1,0 +1,5 @@
+Name (名称),Type (类型),Subtype (子类型),Offset (地址，十六进制),Size (大小，十六进制/K)
+nvs,data,nvs,0x9000,0x5000
+otadata,data,ota,0xE000,0x2000
+phy_init,data,phy,0x10000,0x1000
+factory,app,factory,0x20000,0x3D0000 (约 3.9 MB)

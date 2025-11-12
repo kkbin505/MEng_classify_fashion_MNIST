@@ -164,31 +164,31 @@ converter.representative_dataset = representative_data_gen
 # 2. Set Supported Types (Allowing higher internal precision for better accuracy)
 # This tells the converter that using INT16 or FLOAT16 for internal operations is acceptable,
 # which can help recover accuracy lost in 8-bit quantization.
-converter.target_spec.supported_types = [tf.float16, tf.int16] 
+converter.target_spec.supported_types = [tf.int16] 
 
 # 3. Force Integer Input/Output (Required for TFLite Micro on ESP32)
 # We force INT8 I/O as TFLite's conversion API usually only supports INT8/UINT8 as the full integer interface.
-# converter.inference_input_type = tf.int8
-# converter.inference_output_type = tf.int8
+# converter.inference_input_type = tf.int16
+# converter.inference_output_type = tf.int16
 
 
 # 8.3 Perform the Conversion (This creates the optimized TFLite model)
-tflite_model_hybrid = converter.convert()
+tflite_model_int16 = converter.convert()
 
 # 8.4 Save the Quantized Model
-TFLITE_MODEL_NAME_HYBRID = 'fashion_mnist_quant_hybrid.tflite'
-with open(TFLITE_MODEL_NAME_HYBRID, 'wb') as f:
-    f.write(tflite_model_hybrid)
+TFLITE_MODEL_NAME_INT16 = 'fashion_mnist_quant_int16.tflite'
+with open(TFLITE_MODEL_NAME_INT16, 'wb') as f:
+    f.write(tflite_model_int16)
 
-print(f"\nHybrid INT8/INT16 Quantized TFLite model saved to: {TFLITE_MODEL_NAME_HYBRID}")
-print(f"Model size: {len(tflite_model_hybrid) / 1024:.2f} KB")
+print(f"\nHybrid INT8/INT16 Quantized TFLite model saved to: {TFLITE_MODEL_NAME_INT16}")
+print(f"Model size: {len(tflite_model_int16) / 1024:.2f} KB")
 
 # =========================================================================
 # Step 9: Evaluate the Quantized Model (Crucial Check)
 # =========================================================================
 
 # Evaluate the TFLite model to check for accuracy drop due to quantization.
-interpreter = tf.lite.Interpreter(model_content=tflite_model_hybrid)
+interpreter = tf.lite.Interpreter(model_content=tflite_model_int16)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()[0]
 output_details = interpreter.get_output_details()[0]
