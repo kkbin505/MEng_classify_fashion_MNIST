@@ -1,6 +1,0 @@
-source "C:/Espressif/frameworks/esp-idf-v5.5.1/components/bootloader/Kconfig.projbuild"
-source "C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_app_format/Kconfig.projbuild"
-source "C:/Espressif/frameworks/esp-idf-v5.5.1/components/esp_rom/Kconfig.projbuild"
-source "C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py/Kconfig.projbuild"
-source "C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/Kconfig.projbuild"
-source "D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/managed_components/espressif__esp-nn/Kconfig.projbuild"
