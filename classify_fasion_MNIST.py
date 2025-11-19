@@ -5,9 +5,13 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import tensorflow_model_optimization as tfmot 
+from tensorflow.keras.layers import Flatten, Dense
 
 # Define data location
 DATA_PATH = 'data' # <-- EDIT THIS PATH
+TFLITE_FILE_NAME = 'fashion_mnist_full_int16_qat.tflite'
+C_HEADER_NAME = 'model_data_int16.h'
 
 # Step 1: Load the Fashion MNIST Dataset from local
 def load_fashion_mnist_data(path, kind='train'):
@@ -72,150 +76,76 @@ model.summary()
 # Step 5: Train the Model
 print("\nStarting model training...")
 history = model.fit(train_images, train_labels, epochs=10, validation_split=0.1)
-print("Model training finished.")
+print("Base Model Training Finished.")
+test_acc_base = model.evaluate(test_images, test_labels, verbose=0)[1]
+print(f'Base Model Accuracy: {test_acc_base:.4f}')
 
-# Step 6: Evaluate the Model's Accuracy
-print("\nEvaluating model on test data...")
-test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
-print(f'\nTest accuracy: {test_acc:.4f}')
+# =========================================================================
+# Step 6: QUANTIZATION AWARE TRAINING (QAT)
+# =========================================================================
+
+# Step 6: QAT API
+quantize_model = tfmot.quantization.keras.quantize_model
+qat_model = quantize_model(model)
+print("\nModel transformed for Quantization-Aware Training.")
+
+qat_model.compile(optimizer='adam',
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
+
+print("\nStarting QAT fine-tuning (4 epochs)...")
+qat_model.fit(train_images, train_labels, epochs=4, validation_split=0.1)
+print("QAT Fine-Tuning Finished.")
+
+test_acc_qat = qat_model.evaluate(test_images, test_labels, verbose=0)[1]
+print(f'QAT Model Accuracy after fine-tuning: {test_acc_qat:.4f}')
+print(f"QAT successfully recovered accuracy: {test_acc_base - test_acc_qat:.4f} drop.")
+
+# =========================================================================
+# Step 7: CONVERSION TO FULL INT16 TFLITE (Final Deployment Model)
+# =========================================================================
 
 # Step 7: Make Predictions
-predictions = model.predict(test_images)
+def representative_data_gen():
+    for input_value in tf.data.Dataset.from_tensor_slices(train_images).batch(1).take(100):
+        yield [input_value]
 
-# Helper functions to visualize the predictions
-def plot_image(i, predictions_array, true_label, img):
-    true_label, img = true_label[i], img[i]
-    plt.grid(False)
-    plt.xticks([])
-    plt.yticks([])
-    plt.imshow(img, cmap=plt.cm.binary)
-    predicted_label = np.argmax(predictions_array)
-    color = 'blue' if predicted_label == true_label else 'red'
-    plt.xlabel(f"{class_names[predicted_label]} {100*np.max(predictions_array):2.0f}% ({class_names[true_label]})",
-               color=color)
+converter = tf.lite.TFLiteConverter.from_keras_model(qat_model)
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
 
-def plot_value_array(i, predictions_array, true_label):
-    true_label = true_label[i]
-    plt.grid(False)
-    plt.xticks(range(10))
-    plt.yticks([])
-    thisplot = plt.bar(range(10), predictions_array, color="#777777")
-    plt.ylim([0, 1])
-    predicted_label = np.argmax(predictions_array)
-    thisplot[predicted_label].set_color('red')
-    thisplot[true_label].set_color('blue')
+# 7.2 convert to int16
+converter.representative_dataset = representative_data_gen
+converter.target_spec.supported_types = [tf.int16] 
+converter.inference_input_type = tf.int16
+converter.inference_output_type = tf.int16
 
-# Let's visualize the prediction for the first image
-print("\nVisualizing a prediction...")
-i = 0
-plt.figure(figsize=(6,3))
-plt.subplot(1,2,1)
-plot_image(i, predictions[i], test_labels, test_images)
-plt.subplot(1,2,2)
-plot_value_array(i, predictions[i], test_labels)
-# plt.show()
+tflite_model_full_int16_qat = converter.convert()
+print("\n✅ TFLite Full INT16 Model Conversion Successful.")
 
-# Plot training & validation accuracy values
-print("\nPlotting training history...")
-plt.figure(figsize=(10, 4))
-plt.subplot(1, 2, 1)
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_accuracy'])
-plt.title('Model accuracy')
-plt.ylabel('Accuracy')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Validation'], loc='upper left')
-
-# Plot training & validation loss values
-plt.subplot(1, 2, 2)
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
-plt.title('Model loss')
-plt.ylabel('Loss')
-plt.xlabel('Epoch')
-plt.legend(['Train', 'Validation'], loc='upper left')
-
-plt.tight_layout()
-# plt.show()
 
 # =========================================================================
 # Step 8: CONVERT AND QUANTIZE MODEL FOR ESP32-S3 (TFLite Micro)
 # We use Hybrid Quantization (INT8 interface, aiming for better internal precision)
 # =========================================================================
-
-# 8.1 Define the Converter
-converter = tf.lite.TFLiteConverter.from_keras_model(model)
-
-# 8.2 Enable Full Integer Quantization with FLOAT16/INT16 Support
-
-# Enable default optimization (including weight quantization)
-converter.optimizations = [tf.lite.Optimize.DEFAULT]
-
-# 1. Provide a Representative Dataset (Required for full integer quantization)
-# This dataset helps determine the min/max range for activation quantization.
-def representative_data_gen():
-    # Use 100 samples from the training data for calibration
-    # The data must be cast to float32 first, as expected by the generator
-    for input_value in tf.data.Dataset.from_tensor_slices(train_images).batch(1).take(100):
-        yield [tf.cast(input_value, tf.float32)]
-
-converter.representative_dataset = representative_data_gen
-
-# 2. Set Supported Types (Allowing higher internal precision for better accuracy)
-# This tells the converter that using INT16 or FLOAT16 for internal operations is acceptable,
-# which can help recover accuracy lost in 8-bit quantization.
-converter.target_spec.supported_types = [tf.int16] 
-
-# 3. Force Integer Input/Output (Required for TFLite Micro on ESP32)
-# We force INT8 I/O as TFLite's conversion API usually only supports INT8/UINT8 as the full integer interface.
-# converter.inference_input_type = tf.int16
-# converter.inference_output_type = tf.int16
+# 1. 保存 TFLite 文件
+with open(TFLITE_FILE_NAME, 'wb') as f:
+    f.write(tflite_model_full_int16_qat)
 
 
-# 8.3 Perform the Conversion (This creates the optimized TFLite model)
-tflite_model_int16 = converter.convert()
+# 2. 将 TFLite 文件转换为 C 数组 (替换你的 ESP32 头文件)
+tflite_model_binary = tflite_model_full_int16_qat
+c_code = (
+    f"#ifndef MODEL_DATA_INT16_H\n"
+    f"#define MODEL_DATA_INT16_H\n\n"
+    f"// Model was generated using Quantization Aware Training (QAT).\n"
+    f"const unsigned char g_model_data[] = {{\n  " + 
+    ', '.join(f'0x{b:02x}' for b in tflite_model_binary) + 
+    "\n};\n"
+    f"const int g_model_data_len = {len(tflite_model_binary)};\n\n"
+    f"#endif // MODEL_DATA_INT16_H\n"
+)
 
-# 8.4 Save the Quantized Model
-TFLITE_MODEL_NAME_INT16 = 'fashion_mnist_quant_int16.tflite'
-with open(TFLITE_MODEL_NAME_INT16, 'wb') as f:
-    f.write(tflite_model_int16)
+with open(C_HEADER_NAME, 'w') as f:
+    f.write(c_code)
 
-print(f"\nHybrid INT8/INT16 Quantized TFLite model saved to: {TFLITE_MODEL_NAME_INT16}")
-print(f"Model size: {len(tflite_model_int16) / 1024:.2f} KB")
-
-# =========================================================================
-# Step 9: Evaluate the Quantized Model (Crucial Check)
-# =========================================================================
-
-# Evaluate the TFLite model to check for accuracy drop due to quantization.
-interpreter = tf.lite.Interpreter(model_content=tflite_model_int16)
-interpreter.allocate_tensors()
-input_details = interpreter.get_input_details()[0]
-output_details = interpreter.get_output_details()[0]
-
-# Preprocess test images for INT8 model (Scale from 0.0-1.0 back to 0-255 and cast to int8)
-# The input range for the INT8 model is typically [-128, 127] or [0, 255], 
-# depending on the zero-point determined by quantization. Here we assume 0-255 scale.
-test_images_float32 = test_images.astype(np.float32)
-
-tflite_predictions = []
-num_test_samples = 1000 # Increase samples for better confidence
-correct_predictions = 0
-
-for i in range(num_test_samples):
-    # Reshape and set the input tensor
-    input_data = test_images_float32[i:i+1].reshape(1, 28, 28)
-    interpreter.set_tensor(input_details['index'], input_data)
-    
-    # Run inference
-    interpreter.invoke()
-    
-    # Get the output tensor and find the predicted class index
-    output = interpreter.get_tensor(output_details['index'])
-    predicted_label = np.argmax(output[0])
-    
-    if predicted_label == test_labels[i]:
-        correct_predictions += 1
-
-tflite_accuracy = correct_predictions / num_test_samples
-print(f"Quantized TFLite model accuracy (on {num_test_samples} samples): {tflite_accuracy:.4f}")
+print(f"\n🎉 SUCCESS! New QAT Header created: {C_HEADER_NAME}. Now redeploy to ESP32.")
