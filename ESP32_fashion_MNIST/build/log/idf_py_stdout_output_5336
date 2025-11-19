@@ -1,0 +1,587 @@
+Command: D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p com21 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 D:\LiZhen\Github\MEng_classify_fashion_MNIST\ESP32_fashion_MNIST\build\person_detection.elf D:\LiZhen\Github\MEng_classify_fashion_MNIST\ESP32_fashion_MNIST\build\bootloader\bootloader.elf --force-color -m 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'com21'
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+[0;32mI (25) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (25) boot: compile time Nov 18 2025 22:00:50[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (28) boot: efuse block revision: v1.3[0m
+[0;32mI (31) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (36) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (40) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (52) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (61) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (74) boot:  2 factory          factory app      00 00 00010000 00180000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (83) esp_image: segment 0: paddr=00010020 vaddr=3c030020 size=71fdch (466908) map[0m
+[0;32mI (160) esp_image: segment 1: paddr=00082004 vaddr=3fc92800 size=02f20h ( 12064) load[0m
+[0;32mI (163) esp_image: segment 2: paddr=00084f2c vaddr=40374000 size=0b0ech ( 45292) load[0m
+[0;32mI (173) esp_image: segment 3: paddr=00090020 vaddr=42000020 size=2d180h (184704) map[0m
+[0;32mI (200) esp_image: segment 4: paddr=000bd1a8 vaddr=4037f0ec size=03700h ( 14080) load[0m
+[0;32mI (203) esp_image: segment 5: paddr=000c08b0 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (210) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (210) boot: Disabling RNG early entropy source...[0m
+[0;32mI (226) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (226) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (226) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (228) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (232) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (237) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (241) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (246) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (250) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (255) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (260) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (265) MSPI Timing: PSRAM timing tuning index: 4[0m
+[0;32mI (269) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (273) esp_psram: Speed: 80MHz[0m
+[0;32mI (275) cpu_start: Multicore app[0m
+[0;32mI (560) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (569) cpu_start: Pro cpu start user code[0m
+[0;32mI (569) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (569) app_init: Application information:[0m
+[0;32mI (569) app_init: Project name:     person_detection[0m
+[0;32mI (574) app_init: App version:      f859bb9-dirty[0m
+[0;32mI (578) app_init: Compile time:     Nov 18 2025 22:00:29[0m
+[0;32mI (583) app_init: ELF file SHA256:  de6aa7ab0...[0m
+[0;32mI (588) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (591) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (595) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (599) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (603) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (609) heap_init: At 3FC97100 len 00052610 (329 KiB): RAM[0m
+[0;32mI (614) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (620) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (625) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (632) spi_flash: detected chip: boya[0m
+[0;32mI (635) spi_flash: flash io: qio[0m
+[0;33mW (638) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.[0m
+[0;32mI (650) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (656) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (663) main_task: Started on CPU0[0m
+[0;32mI (683) main_task: Calling app_main()[0m
+[0;32mI (683) FM_APP: Starting Fashion MNIST (Float32 I/O Mode)...[0m
+[0;32mI (683) FM_APP: Input Type Verified: Float32[0m
+[0;32mI (683) FM_APP: Entering Inference Loop...[0m
+[0;32mI (703) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (2713) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (4723) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (6733) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (8743) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (10753) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (12763) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (14773) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (16783) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (18793) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (20803) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (22813) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (24823) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (26833) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (28843) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (30853) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (32863) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (34873) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (36883) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (38893) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (40903) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (42913) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (44923) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (46933) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (48943) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (50953) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (52963) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (54973) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (56983) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (58993) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (61003) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (63013) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (65023) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (67033) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (69043) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (71053) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (73063) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (75073) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (77083) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (79093) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (81103) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (83113) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (85123) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (87133) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (89143) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (91153) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (93163) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (95173) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (97183) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (99193) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (101203) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (103213) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (105223) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (107233) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (109243) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (111253) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (113263) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (115273) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (117283) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (119293) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (121303) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (123313) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (125323) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (127333) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (129343) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (131353) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (133363) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (135373) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (137383) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (139393) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (141403) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (143413) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (145423) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (147433) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (149443) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (151453) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (153463) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (155473) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (157483) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (159493) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (161503) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (163513) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (165523) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (167533) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (169543) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (171553) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (173563) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (175573) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (177583) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (179593) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (181603) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (183613) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (185623) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (187633) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (189643) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (191653) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (193663) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (195673) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (197683) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (199693) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (201703) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (203713) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (205723) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (207733) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (209743) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (211753) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (213763) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (215773) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (217783) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (219793) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (221803) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (223813) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (225823) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (227833) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (229843) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (231853) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (233863) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (235873) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (237883) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (239893) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (241903) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (243913) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (245923) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (247933) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (249943) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (251953) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (253963) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (255973) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (257983) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (259993) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (262003) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (264013) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (266023) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (268033) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (270043) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (272053) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (274063) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (276073) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (278083) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (280093) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (282103) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (284113) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (286123) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (288133) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (290143) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (292153) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (294163) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (296173) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (298183) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (300193) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (302203) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (304213) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (306223) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (308233) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (310243) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (312253) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (314263) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (316273) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (318283) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (320293) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (322303) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (324313) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (326323) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (328333) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (330343) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (332353) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (334363) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (336373) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (338383) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (340393) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (342403) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (344413) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (346423) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (348433) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (350443) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (352453) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (354463) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (356473) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (358483) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (360493) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (362503) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (364513) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (366523) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (368533) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (370543) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (372553) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (374563) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (376573) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (378583) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (380593) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (382603) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (384613) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (386623) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (388633) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (390643) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (392653) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (394663) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (396673) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (398683) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (400693) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (402703) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (404713) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (406723) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (408733) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (410743) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (412753) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (414763) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (416773) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (418783) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (420793) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (422803) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (424813) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (426823) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (428833) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (430843) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (432853) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (434863) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (436873) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (438883) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (440893) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (442903) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (444913) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (446923) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (448933) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (450943) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (452953) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (454963) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (456973) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (458983) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (460993) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (463003) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (465013) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (467023) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (469033) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (471043) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (473053) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (475063) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (477073) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (479083) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (481093) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (483103) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (485113) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (487123) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (489133) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (491143) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (493153) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (495163) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (497173) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (499183) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (501193) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (503203) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (505213) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (507223) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (509233) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (511243) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (513253) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (515263) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (517273) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (519283) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (521293) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (523303) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (525313) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (527323) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (529333) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (531343) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (533353) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (535363) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (537373) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (539383) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (541393) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (543403) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (545413) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (547423) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (549433) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (551443) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (553453) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (555463) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (557473) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (559483) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (561493) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (563503) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (565513) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (567523) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (569533) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (571543) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (573553) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (575563) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (577573) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (579583) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (581593) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (583603) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (585613) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (587623) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (589633) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (591643) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (593653) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (595663) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (597673) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (599683) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (601693) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (603703) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (605713) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (607723) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (609733) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (611743) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (613753) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (615763) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (617773) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (619783) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (621793) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (623803) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (625813) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (627823) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (629833) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (631843) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (633853) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (635863) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (637873) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (639883) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (641893) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (643903) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (645913) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (647923) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (649933) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (651943) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (653953) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (655963) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (657973) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (659983) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (661993) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (664003) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (666013) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (668023) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (670033) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (672043) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (674053) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (676063) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (678073) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (680083) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (682093) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (684103) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (686113) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (688123) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (690133) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (692143) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (694153) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (696163) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (698173) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (700183) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (702193) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (704203) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (706213) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (708223) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (710233) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (712243) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (714253) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (716263) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (718273) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (720283) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (722293) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (724303) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (726313) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (728323) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (730333) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (732343) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (734353) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (736363) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (738373) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (740383) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (742393) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (744403) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (746413) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (748423) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (750433) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (752443) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (754453) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (756463) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (758473) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (760483) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (762493) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (764503) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (766513) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (768523) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (770533) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (772543) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (774553) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (776563) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (778573) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (780583) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (782593) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (784603) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (786613) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (788623) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (790633) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (792643) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (794653) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (796663) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (798673) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (800683) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (802693) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (804703) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (806713) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (808723) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (810733) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (812743) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (814753) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (816763) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (818773) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (820783) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (822793) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (824803) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (826813) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (828823) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (830833) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (832843) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (834853) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (836863) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (838873) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (840883) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (842893) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (844903) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (846913) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (848923) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (850933) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (852943) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (854953) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (856963) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (858973) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (860983) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (862993) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (865003) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (867013) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (869023) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (871033) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (873043) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (875053) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (877063) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (879073) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (881083) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (883093) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (885103) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (887113) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (889123) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (891133) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (893143) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (895153) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (897163) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (899173) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (901183) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (903193) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (905203) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (907213) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (909223) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (911233) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (913243) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (915253) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (917263) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (919273) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (921283) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (923293) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (925303) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (927313) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (929323) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (931333) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (933343) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (935353) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (937363) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (939373) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (941383) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (943393) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (945403) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (947413) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (949423) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (951433) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (953443) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (955453) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (957463) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (959473) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (961483) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (963493) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (965503) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (967513) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (969523) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (971533) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (973543) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (975553) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (977563) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (979573) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (981583) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (983593) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (985603) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (987613) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (989623) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (991633) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (993643) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (995653) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (997663) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (999673) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1001683) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1003693) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1005703) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1007713) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1009723) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1011733) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1013743) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1015753) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1017763) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1019773) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1021783) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1023793) FM_APP: Prediction: Shirt (34.74%)[0m
+[0;32mI (1025803) FM_APP: Prediction: Shirt (34.74%)[0m

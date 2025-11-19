@@ -1,0 +1,88 @@
+Command: ninja flash
+[1/10] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\LiZhen\Github\MEng_classify_fashion_MNIST\ESP32_fashion_MNIST\build\bootloader\esp-idf\esptool_py && D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/bootloader/bootloader.bin"
+Bootloader binary size 0x57e0 bytes. 0x2820 bytes (31%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building CXX object esp-idf/main/CMakeFiles/__idf_main.dir/main.cpp.obj
+[5/10] Linking C static library esp-idf\main\libmain.a
+[6/10] Generating esp-idf/esp_system/ld/sections.ld
+[7/10] Linking CXX executable person_detection.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/person_detection.bin
+[9/10] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\LiZhen\Github\MEng_classify_fashion_MNIST\ESP32_fashion_MNIST\build\esp-idf\esptool_py && D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 partition --type app D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/partition_table/partition-table.bin D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/person_detection.bin"
+person_detection.bin binary size 0xb1500 bytes. Smallest app partition is 0x180000 bytes. 0xceb00 bytes (54%) free.
+[9/10] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Espressif\frameworks\esp-idf-v5.5.1\components\esptool_py && D:\Espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=C:/Espressif/frameworks/esp-idf-v5.5.1 -D SERIAL_TOOL=D:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;;C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py/esptool/esptool.py;--chip;esp32s3 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build -P C:/Espressif/frameworks/esp-idf-v5.5.1/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32s3 -p com21 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 8MB 0x0 bootloader/bootloader.bin 0x10000 person_detection.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.10.0
+Serial port com21
+Connecting...
+Failed to get PID of a device on com21, using standard reset sequence.
+.
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+MAC: 80:b5:4e:c5:87:3c
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000c1fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 22496 bytes to 14267...
+Writing at 0x00000000... (100 %)
+Wrote 22496 bytes (14267 compressed) at 0x00000000 in 0.7 seconds (effective 258.6 kbit/s)...
+Hash of data verified.
+Compressed 726272 bytes to 566141...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001bd60... (5 %)
+Writing at 0x00020afd... (8 %)
+Writing at 0x000250ea... (11 %)
+Writing at 0x000296d3... (14 %)
+Writing at 0x0002dca3... (17 %)
+Writing at 0x00032291... (20 %)
+Writing at 0x0003681c... (22 %)
+Writing at 0x0003adf7... (25 %)
+Writing at 0x0003f3d6... (28 %)
+Writing at 0x000439b3... (31 %)
+Writing at 0x00047f9a... (34 %)
+Writing at 0x0004c56a... (37 %)
+Writing at 0x00050b34... (40 %)
+Writing at 0x0005510a... (42 %)
+Writing at 0x000596e6... (45 %)
+Writing at 0x0005dcc4... (48 %)
+Writing at 0x000622b5... (51 %)
+Writing at 0x0006689f... (54 %)
+Writing at 0x0006ae20... (57 %)
+Writing at 0x0006f3f8... (60 %)
+Writing at 0x000739d2... (62 %)
+Writing at 0x00077fa6... (65 %)
+Writing at 0x0007c592... (68 %)
+Writing at 0x00081074... (71 %)
+Writing at 0x000897b0... (74 %)
+Writing at 0x0008f5dd... (77 %)
+Writing at 0x000954bf... (80 %)
+Writing at 0x0009af08... (82 %)
+Writing at 0x000a0547... (85 %)
+Writing at 0x000a5757... (88 %)
+Writing at 0x000aaba1... (91 %)
+Writing at 0x000afd75... (94 %)
+Writing at 0x000b739b... (97 %)
+Writing at 0x000bdf47... (100 %)
+Wrote 726272 bytes (566141 compressed) at 0x00010000 in 12.8 seconds (effective 453.0 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 105...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (105 compressed) at 0x00008000 in 0.1 seconds (effective 456.6 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
