@@ -1,25 +1,23 @@
-# MEng_classify_fashion_MNIST
-classify fashion MNIST
-
-Fashion MNIST Image Classifier
+## Fashion MNIST Image Classifier
+UCI M.Eng. EECS class project -- classify fashion MNIST
 
 This project is a simple neural network designed to classify images of clothing from the Fashion MNIST dataset. It's built using Python and the TensorFlow/Keras library.
 
 The main goal is to demonstrate the complete workflow of a basic image classification task, including:
 
-Loading a dataset from local binary files.
+* Loading a dataset from local binary files.
 
-Preprocessing the image data.
+* Preprocessing the image data.
 
-Building a sequential neural network.
+* Building a sequential neural network.
 
-Training the model.
+* Training the model.
 
-Evaluating its performance on a test set.
+* Evaluating its performance on a test set.
 
-Visualizing the results.
+* Visualizing the results.
 
-File Descriptions
+# File Descriptions
 
 fashion_mnist_classifier.py: This is the main Python script that contains all the code to run the project. It handles data loading, model creation, training, and evaluation.
 
@@ -27,33 +25,30 @@ Step_by_Step_Guide.md: A supplementary Markdown file that explains the logic and
 
 data/: This directory is where the Fashion MNIST dataset files must be stored.
 
-🚀 Getting Started: Setup Instructions
+# Getting Started: Setup Instructions
 
 Follow these steps carefully to set up and run the project on your local machine.
 
-Step 1: Clone the Repository
+** Step 1: Clone the Repository **
 
 First, clone this repository to your computer using the following command in your terminal:
 
 git clone <your-repository-url>
 cd <your-repository-name>
 
-
-Step 2: Create a Python Virtual Environment (Recommended)
+** Step 2: Create a Python Virtual Environment (Recommended) **
 
 It's a best practice to create a virtual environment to manage project dependencies and avoid conflicts with other projects.
 
-
-Step 3: Install Required Libraries
+** Step 3: Install Required Libraries **
 
 The script depends on TensorFlow and Matplotlib. Install them using pip:
 
 pip install tensorflow matplotlib
 
-
 This will prevent the ModuleNotFoundError: No module named 'tensorflow' error.
 
-Step 4: Download and Place the Dataset
+** Step 4: Download and Place the Dataset **
 
 The script is configured to load data from a local data folder.
 
@@ -74,21 +69,20 @@ Your_Project_Folder/
 
 Note: This is the most critical step. If the files are not in the correct location or named correctly, you will get a FileNotFoundError.
 
-How to Run the Code
+# How to Run the Code
 
 Once you have completed all the setup steps, running the project is simple. Make sure your virtual environment is activated and you are in the project's main directory. Then, run the following command in your terminal:
 
 python fashion_mnist_classifier.py
 
 
-Expected Output
+# Expected Output
 
 When you run the script, you should see the following:
 
 A summary of the model's architecture printed in the console.
 
 ![alt text](img/image-2.png)
-
 
 The training progress for 10 epochs, showing the loss and accuracy for each epoch.
 
@@ -105,13 +99,13 @@ The second shows the model's accuracy and loss history over the training epochs.
 ![epochs](img/image-1.png)
 
 
-## Add nootbook
+# Add notebook
 
  Now we can run this file in cloud:
 
- 1 Open google https://colab.research.google.com/
+ 1. Open google https://colab.research.google.com/
  
- 2 Import github from the git link https://github.com/kkbin505/MEng_classify_fashion_MNIST.git
+ 2. Import github from the git link https://github.com/kkbin505/MEng_classify_fashion_MNIST.git
  
- 3 run note book and have fun
+ 3. Run note book and have fun
 
