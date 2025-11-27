@@ -1,4 +1,4 @@
-## Fashion MNIST Image Classifier
+# Fashion MNIST Image Classifier
 UCI M.Eng. EECS class project -- classify fashion MNIST
 
 This project is a simple neural network designed to classify images of clothing from the Fashion MNIST dataset. It's built using Python and the TensorFlow/Keras library.
@@ -17,7 +17,7 @@ The main goal is to demonstrate the complete workflow of a basic image classific
 
 * Visualizing the results.
 
-# File Descriptions
+## File Descriptions
 
 fashion_mnist_classifier.py: This is the main Python script that contains all the code to run the project. It handles data loading, model creation, training, and evaluation.
 
@@ -25,7 +25,7 @@ Step_by_Step_Guide.md: A supplementary Markdown file that explains the logic and
 
 data/: This directory is where the Fashion MNIST dataset files must be stored.
 
-# Getting Started: Setup Instructions
+## Getting Started: Setup Instructions
 
 Follow these steps carefully to set up and run the project on your local machine.
 
@@ -69,14 +69,14 @@ Your_Project_Folder/
 
 Note: This is the most critical step. If the files are not in the correct location or named correctly, you will get a FileNotFoundError.
 
-# How to Run the Code
+## How to Run the Code
 
 Once you have completed all the setup steps, running the project is simple. Make sure your virtual environment is activated and you are in the project's main directory. Then, run the following command in your terminal:
 
 python fashion_mnist_classifier.py
 
 
-# Expected Output
+## Expected Output
 
 When you run the script, you should see the following:
 
@@ -99,7 +99,7 @@ The second shows the model's accuracy and loss history over the training epochs.
 ![epochs](img/image-1.png)
 
 
-# Add notebook
+## Add notebook
 
  Now we can run this file in cloud:
 
