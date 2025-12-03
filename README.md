@@ -1,5 +1,7 @@
 # Fashion MNIST Image Classifier
-UCI M.Eng. EECS class project -- classify fashion MNIST
+UCI M.Eng. class project -- classify fashion MNIST
+
+
 
 This project is a simple neural network designed to classify images of clothing from the Fashion MNIST dataset. It's built using Python and the TensorFlow/Keras library.
 
@@ -59,11 +61,17 @@ Download the four gzipped ubyte files from the official Fashion MNIST GitHub rep
 Unzip the files and place them inside the data folder. Your folder structure must look exactly like this:
 
 Your_Project_Folder/
+
 ├── fashion_mnist_classifier.py
+
 └── data/
+
     ├── train-images-idx3-ubyte
+
     ├── train-labels-idx1-ubyte
+
     ├── t10k-images-idx3-ubyte
+
     └── t10k-labels-idx1-ubyte
 
 
