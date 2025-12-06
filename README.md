@@ -31,18 +31,18 @@ data/: This directory is where the Fashion MNIST dataset files must be stored.
 
 Follow these steps carefully to set up and run the project on your local machine.
 
-** Step 1: Clone the Repository **
+**Step 1: Clone the Repository**
 
 First, clone this repository to your computer using the following command in your terminal:
 
 git clone <your-repository-url>
 cd <your-repository-name>
 
-** Step 2: Create a Python Virtual Environment (Recommended) **
+**Step 2: Create a Python Virtual Environment (Recommended)**
 
 It's a best practice to create a virtual environment to manage project dependencies and avoid conflicts with other projects.
 
-** Step 3: Install Required Libraries **
+**Step 3: Install Required Libraries**
 
 The script depends on TensorFlow and Matplotlib. Install them using pip:
 
@@ -50,7 +50,7 @@ pip install tensorflow matplotlib
 
 This will prevent the ModuleNotFoundError: No module named 'tensorflow' error.
 
-** Step 4: Download and Place the Dataset **
+**Step 4: Download and Place the Dataset**
 
 The script is configured to load data from a local data folder.
 
