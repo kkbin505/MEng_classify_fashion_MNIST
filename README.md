@@ -105,7 +105,7 @@ The second shows the model's accuracy and loss history over the training epochs.
 ![epochs](img/image-1.png)
 
 
-# 🚀 Fashion MNIST to ESP32-S3 Deployment Checklist
+#  Fashion MNIST to ESP32-S3 Deployment Checklist
 
 This document summarizes the critical steps and outcomes of the model optimization process for TinyML deployment, highlighting key configuration changes.
 
@@ -113,28 +113,22 @@ This document summarizes the critical steps and outcomes of the model optimizati
 
 ## I. Model Training and Optimization
 
-### 🎯 Step 1: Baseline Keras Model Training
+###  Step 1: Baseline Keras Model Training
 
 * **Goal:** Establish the baseline accuracy of the **Float32** model.
 * **Architecture:** Simple Fully Connected Network: (`Flatten` $\rightarrow$ `Dense` (ReLU) $\rightarrow$ `Dense` (Softmax)).
 * **Result:** Achieved a baseline test accuracy of approximately **$0.88 - 0.90$**.
 
-### 📉 Step 2: Failed Attempt (Full INT8 Quantization)
+###  Step 2: Failed Attempt (Full INT8 Quantization)
 
 * **Configuration:** Enforced full integer quantization (INT8 I/O and weights) using `representative_dataset`.
 * **Outcome:** **Catastrophic accuracy drop ($\mathbf{0.1200}$)**.
 * **Diagnosis:** The model could not tolerate the $8$-bit precision loss at the **Input/Output interface**.
 
-### ✅ Step 3: Successful Conversion (Hybrid Quantization)
+###  Step 3: Successful Conversion (Hybrid Quantization)
 
 * **Goal:** Recover model accuracy while achieving file size reduction.
 * **Hybrid Mode:** **$\text{FLOAT32}$ I/O interface** with $\text{FLOAT16}$/$\text{INT16}$ internal weight storage.
-* **Converter Settings:**
-    ```python
-    converter.optimizations = [tf.lite.Optimize.DEFAULT]
-    converter.target_spec.supported_types = [tf.float16, tf.int16] 
-    # NOTE: I/O types were explicitly removed to default to high-precision FP32.
-    ```
 * **Final Result:** TFLite model created with $\text{FP32}$ I/O. Test accuracy was successfully recovered to **$\mathbf{0.8880}$**.
 
 ---
@@ -143,13 +137,13 @@ This document summarizes the critical steps and outcomes of the model optimizati
 
 The optimized model is ready for embedding via TensorFlow Lite Micro (TFLite Micro).
 
-### 📝 Step 4: Convert TFLite Binary to C Array
+###  Step 4: Convert TFLite Binary to C Array
 
 * **Action:** The optimized `.tflite` binary file was read and converted into a `const unsigned char` array.
-* **Purpose:** This C header file (`model_data.h`) allows the model to be directly included in the microcontroller's firmware.
+* **Purpose:** This C header file (`esp32_test_data.h`) allows the model to be directly included in the microcontroller's firmware.
 
-### ➡️ Next Step: ESP-IDF Integration
+###  Next Step: ESP-IDF Integration
 
-The next phase involves integrating the generated `model_data.h` into an ESP-IDF project, initializing the TFLite Micro interpreter, and running inference on the ESP32-S3.
+The next phase involves integrating the generated `esp32_test_data.h` into an ESP-IDF project, initializing the TFLite Micro interpreter, and running inference on the ESP32-S3.
 
  
