@@ -1,6 +1,5 @@
 # Classifyer
 
-
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -137,6 +136,8 @@ plt.legend(['Train', 'Validation'], loc='upper left')
 
 plt.tight_layout()
 # plt.show()
+model.save("fashion_mnist_model.keras")    # SavedModel格式
+
 
 # =========================================================================
 # Step 8: CONVERT AND QUANTIZE MODEL FOR ESP32-S3 (TFLite Micro)
