@@ -1,4 +1,4 @@
-# Install script for directory: C:/Espressif/frameworks/esp-idf-v5.5.1
+# Install script for directory: D:/LiZhen/Software/esp-idf-v5.4.3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/Espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/dell/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20250730/xtensa-esp-elf/bin/xtensa-esp32s3-elf-objdump.exe")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -214,87 +214,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_phy/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_usb_serial_jtag/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_vfs_console/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/vfs/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/lwip/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_netif_stack/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_netif/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/wpa_supplicant/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_coex/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_wifi/cmake_install.cmake")
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_pcnt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_spi/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_gdbstub/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/bt/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/unity/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/cmock/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/console/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_pcnt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -339,11 +264,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_bitscrambler/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_rmt/cmake_install.cmake")
 endif()
 
@@ -374,12 +294,82 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_twai/cmake_install.cmake")
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_driver_usb_serial_jtag/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/driver/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_phy/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_vfs_console/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/vfs/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/lwip/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_netif_stack/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_netif/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/wpa_supplicant/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_coex/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_wifi/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/esp_gdbstub/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/bt/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/unity/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/cmock/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/esp-idf/console/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

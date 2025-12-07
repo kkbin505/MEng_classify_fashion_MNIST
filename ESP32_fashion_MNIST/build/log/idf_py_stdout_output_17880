@@ -1,0 +1,77 @@
+[1/5] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\LiZhen\Github\MEng_classify_fashion_MNIST\ESP32_fashion_MNIST\build\esp-idf\esptool_py && C:\Users\dell\.espressif\python_env\idf5.4_py3.12_env\Scripts\python.exe D:/LiZhen/Software/esp-idf-v5.4.3/components/partition_table/check_sizes.py --offset 0x8000 partition --type app D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/partition_table/partition-table.bin D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/person_detection.bin"
+person_detection.bin binary size 0xb63c0 bytes. Smallest app partition is 0x180000 bytes. 0xc9c40 bytes (53%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\LiZhen\Github\MEng_classify_fashion_MNIST\ESP32_fashion_MNIST\build\bootloader\esp-idf\esptool_py && C:\Users\dell\.espressif\python_env\idf5.4_py3.12_env\Scripts\python.exe D:/LiZhen/Software/esp-idf-v5.4.3/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5760 bytes. 0x28a0 bytes (32%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] C:\WINDOWS\system32\cmd.exe /C "cd /D D:\LiZhen\Software\esp-idf-v5.4.3\components\esptool_py && C:\Users\dell\.espressif\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=D:/LiZhen/Software/esp-idf-v5.4.3 -D SERIAL_TOOL=C:/Users/dell/.espressif/python_env/idf5.4_py3.12_env/Scripts/python.exe;;D:/LiZhen/Software/esp-idf-v5.4.3/components/esptool_py/esptool/esptool.py;--chip;esp32s3 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=D:/LiZhen/Github/MEng_classify_fashion_MNIST/ESP32_fashion_MNIST/build -P D:/LiZhen/Software/esp-idf-v5.4.3/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32s3 -p COM39 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 8MB 0x0 bootloader/bootloader.bin 0x10000 person_detection.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.10.0
+Serial port COM39
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: 80:b5:4e:c5:87:3c
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000c6fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 22368 bytes to 14205...
+Writing at 0x00000000... (100 %)
+Wrote 22368 bytes (14205 compressed) at 0x00000000 in 0.4 seconds (effective 407.1 kbit/s)...
+Hash of data verified.
+Compressed 746432 bytes to 582290...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001bed0... (5 %)
+Writing at 0x00020d0b... (8 %)
+Writing at 0x000251a2... (11 %)
+Writing at 0x00029778... (13 %)
+Writing at 0x0002df11... (16 %)
+Writing at 0x000324f0... (19 %)
+Writing at 0x00036c1e... (22 %)
+Writing at 0x0003b616... (25 %)
+Writing at 0x000400b1... (27 %)
+Writing at 0x00044661... (30 %)
+Writing at 0x00048ea6... (33 %)
+Writing at 0x0004d408... (36 %)
+Writing at 0x00051c9a... (38 %)
+Writing at 0x00056638... (41 %)
+Writing at 0x0005ab87... (44 %)
+Writing at 0x0005f408... (47 %)
+Writing at 0x00063ab4... (50 %)
+Writing at 0x0006817f... (52 %)
+Writing at 0x0006c796... (55 %)
+Writing at 0x00070d8d... (58 %)
+Writing at 0x000753a4... (61 %)
+Writing at 0x00079cb2... (63 %)
+Writing at 0x0007e489... (66 %)
+Writing at 0x00082740... (69 %)
+Writing at 0x0008b154... (72 %)
+Writing at 0x00091249... (75 %)
+Writing at 0x00096cb3... (77 %)
+Writing at 0x0009c589... (80 %)
+Writing at 0x000a1afd... (83 %)
+Writing at 0x000a7031... (86 %)
+Writing at 0x000ac3bd... (88 %)
+Writing at 0x000b12ad... (91 %)
+Writing at 0x000b7733... (94 %)
+Writing at 0x000bd065... (97 %)
+Writing at 0x000c30b4... (100 %)
+Wrote 746432 bytes (582290 compressed) at 0x00010000 in 6.7 seconds (effective 892.7 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 105...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (105 compressed) at 0x00008000 in 0.0 seconds (effective 623.2 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

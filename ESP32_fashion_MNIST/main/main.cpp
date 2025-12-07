@@ -22,6 +22,8 @@
 
 #include "..\out_model\model_data_int8.h" // Model file from python
 #include "test_image.h"
+#include "..\out_model\esp32_test_data.h"
+
 
 static const char *TAG = "FM_APP";
 
@@ -54,7 +56,7 @@ const char* kCategoryLabels[kOutputClasses] = {
 // -----------------------------------------------------
 // 2. FEED INPUT FUNCTION (Quantization)
 // -----------------------------------------------------
-void feedInput(const float* source_data) {
+void feedInput(const uint8_t* source_data) {
     // Model data type check (Int8)
     if (input->type != kTfLiteInt8) {
         ESP_LOGE(TAG, "Input type mismatch! Expected Int8, got %d", input->type);
@@ -66,7 +68,7 @@ void feedInput(const float* source_data) {
     int zero_point = input->params.zero_point;
 
     for (int i = 0; i < kInputSize; i++) {
-        float val = source_data[i];
+        float val = source_data[i]/255.0f;  // Normalize to [0,1]
         // Quantization: q = val / scale + zero_point
         int32_t q = (int32_t)round(val / scale) + zero_point;
         
@@ -128,28 +130,57 @@ extern "C" void app_main() {
 
     while (1) {
         //Quantization model to int8
-        feedInput(g_test_input_data);
+        // feedInput(g_test_input_data);
 
-        // 2. prediction
+        // // 2. prediction
+        // if (interpreter->Invoke() != kTfLiteOk) {
+        //     ESP_LOGE(TAG, "Invoke failed!");
+        // } else {
+        //     // 3. 反量化输出
+        //     float scale = output->params.scale;
+        //     int zero_point = output->params.zero_point;
+        //     int predicted = -1;
+        //     float max_prob = -1.0f;
+
+        //     for (int i = 0; i < kOutputClasses; i++) {
+        //         int8_t q_val = output->data.int8[i];
+        //         float prob = (q_val - zero_point) * scale;
+        //         if (prob > max_prob) {
+        //             max_prob = prob;
+        //             predicted = i;
+        //         }
+        //     }
+        //     ESP_LOGI(TAG, "Prediction: %s (%.2f%%)", kCategoryLabels[predicted], (double)(max_prob * 100.0f));
+        // }
+        // vTaskDelay(pdMS_TO_TICKS(2000));
+    for (int img_idx = 0; img_idx < 30; img_idx++) {
+        // Feed one test image
+        feedInput(test_images[img_idx]);
+
+        // Run inference
         if (interpreter->Invoke() != kTfLiteOk) {
             ESP_LOGE(TAG, "Invoke failed!");
-        } else {
-            // 3. 反量化输出
-            float scale = output->params.scale;
-            int zero_point = output->params.zero_point;
-            int predicted = -1;
-            float max_prob = -1.0f;
-
-            for (int i = 0; i < kOutputClasses; i++) {
-                int8_t q_val = output->data.int8[i];
-                float prob = (q_val - zero_point) * scale;
-                if (prob > max_prob) {
-                    max_prob = prob;
-                    predicted = i;
-                }
-            }
-            ESP_LOGI(TAG, "Prediction: %s (%.2f%%)", kCategoryLabels[predicted], (double)(max_prob * 100.0f));
+            continue;
         }
-        vTaskDelay(pdMS_TO_TICKS(2000));
+
+        // Dequantize output
+        float scale = output->params.scale;
+        int zero_point = output->params.zero_point;
+        int predicted = -1;
+        float max_prob = -1.0f;
+
+        for (int i = 0; i < kOutputClasses; i++) {
+            int8_t q_val = output->data.int8[i];
+            float prob = (q_val - zero_point) * scale;
+            if (prob > max_prob) {
+                max_prob = prob;
+                predicted = i;
+            }
+        }
+
+        ESP_LOGI(TAG, "Image %d prediction: %s (%.2f%%)", img_idx, kCategoryLabels[predicted], (double)(max_prob*100));
+        vTaskDelay(pdMS_TO_TICKS(500)); // optional delay
     }
+
+        }
 }
