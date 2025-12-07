@@ -147,32 +147,61 @@ The optimized model is ready for embedding via TensorFlow Lite Micro (TFLite Mic
 The next phase involves integrating the generated `esp32_test_data.h` into an ESP-IDF project, initializing the TFLite Micro interpreter, and running inference on the ESP32-S3.
 
  Image 0 prediction: Trouser (99.61%)
+ 
  Image 1 prediction: Pullover (98.44%)
+ 
  Image 2 prediction: Bag (99.61%)
+ 
  Image 3 prediction: Sandal (99.61%)
+ 
  Image 4 prediction: Bag (99.61%)
+ 
  Image 5 prediction: Bag (99.61%)
+ 
  Image 6 prediction: Sneaker (88.67%)
+ 
  Image 7 prediction: Coat (98.05%)
+ 
  Image 8 prediction: Bag (99.61%)
+ 
  Image 9 prediction: Bag (99.61%)
+ 
  Image 10 prediction: Sneaker (47.66%)
+ 
  Image 11 prediction: Dress (99.61%)
+ 
  Image 12 prediction: Coat (97.66%)
+ 
  Image 13 prediction: Sneaker (99.61%)
+ 
  Image 14 prediction: Ankle boot (99.61%)
+ 
  Image 15 prediction: Dress (64.45%)
+ 
  Image 16 prediction: Trouser (99.61%)
+ 
  Image 17 prediction: Sneaker (99.61%)
+ 
  Image 18 prediction: Coat (53.91%)
+ 
  Image 19 prediction: Shirt (51.17%)
+ 
  Image 20 prediction: Sneaker (99.61%)
+ 
  Image 21 prediction: Sneaker (99.61%)
+ 
  Image 22 prediction: Sandal (99.61%)
+ 
  Image 23 prediction: Trouser (89.06%)
+ 
  Image 24 prediction: Trouser (99.61%)
+ 
  Image 25 prediction: Sandal (99.61%)
+ 
  Image 26 prediction: Shirt (58.20%)
+ 
  Image 27 prediction: T-shirt/top (97.27%)
+ 
  Image 28 prediction: Dress (98.83%)
+ 
  Image 29 prediction: Coat (94.53%)
